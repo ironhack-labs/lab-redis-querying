@@ -1,10 +1,10 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
-
-# Lab | Redis: Querying the Movies Dataset
+<!-- # **Redis Lab: Querying the Movies Dataset** -->
 
 ## Objective
 
-This lab will help you practice querying data in Redis using the dataset provided [here](https://redis.io/learn/howtos/moviesdatabase/import#importing-the-movies-theaters-and-users). You will execute a series of progressively challenging queries to retrieve, filter, and manipulate movie-related data.
+This lab will help you practice querying data in Redis using the dataset provided [here](https://github.com/RediSearch/redisearch-getting-started/blob/master/docs/006-import-dataset.md). You will execute a series of progressively challenging queries to retrieve, filter, and manipulate movie-related data.
+
+<!-- OLD link to the redis docs & the dataset: https://redis.io/learn/howtos/moviesdatabase/import#importing-the-movies-theaters-and-users-->
 
 ## Dataset Overview
 
@@ -15,9 +15,11 @@ The dataset consists of the following key types:
 - **Ratings**: Stored as sorted sets to track movie ratings
 - **Indexes**: Secondary indexes to facilitate searching
 
+**Make sure the dataset is imported before starting the lab.**
+
 ## Lab Instructions
 
-**Perform the following queries in Redis CLI.**
+**In this section, you will use Redis CLI and basic Redis commands (Hashes, Sets, Sorted Sets, SCAN).**
 
 ### **1. Retrieve a Movie by ID**
 
@@ -31,6 +33,12 @@ HGETALL movie:1
 Retrieve all movie IDs stored in Redis.
 ```sh
 KEYS movie:*
+```
+
+However, do not use `KEYS` in production. Use `SCAN` instead.
+
+```sh
+SCAN 0 MATCH movie:* COUNT 100
 ```
 
 <br>
